@@ -5,6 +5,17 @@ function getClientId() {
     return JSON.parse(rawData);
 }
 
+function saveUserCredentials(credentials_json) {
+    fs.writeFileSync('user_credentials.json', JSON.stringify(credentials_json));
+}
+
+function loadUserCredentials() {
+    const rawData = fs.readFileSync('user_credentials.json');
+    return JSON.parse(rawData);
+}
+
 module.exports = {
-    getClientId: getClientId
+    getClientId: getClientId,
+    saveUserCredentials: saveUserCredentials,
+    loadUserCredentials: loadUserCredentials
 }
